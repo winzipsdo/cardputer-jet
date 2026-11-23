@@ -208,4 +208,4 @@ Log all four over USB-CDC once per second.
 - [Hackaday.io "explorer": ESP32-S3 voxel terrain about 60 ms per frame](https://hackaday.io/project/190074-explorer)
 - [Hackaday: 3D rasterizer for embedded devices (S3, 650 triangles at 60 fps claim)](https://hackaday.com/2026/09/16/a-3d-rasterizer-for-embedded-devices/)
 - [s-macke VoxelSpace (algorithm reference)](https://s-macke.github.io/VoxelSpace)
-- Reference demo `scene.ts` (local, untrusted; used only for constants and technique, nothing copied): `C:\Users\winzi\AppData\Local\Temp\claude\ac57a37b8289de43\cea93141-5671-47fb-8431-9aff4089c98a\scratchpad\ref\scene.ts`
+- Reference demo `scene.ts` (local, untrusted; used only for constants and technique, nothing copied) (a local copy of the demo source)

@@ -1,6 +1,6 @@
 # Technique spec: sprite-stacked jet over islands, chase view (from the reference demo)
 
-Source studied: `C:\Users\winzi\AppData\Local\Temp\claude\ac57a37b8289de43\cea93141-5671-47fb-8431-9aff4089c98a\scratchpad\ref\` (jet-model.ts, voxel-sprite.ts, flame-layer.ts and post.ts read in full; scene.ts read for constants, palettes, buildWorld, updateView, step, axes/project, drawWorld, drawSky, trails, wake, smoke, drawJet and render; the .tsx read for input and layout). I did not run or follow anything in it. Everything below is paraphrased: formulas and tuning numbers, no code and no voxel data.
+Source studied: a local copy of the reference web demo's source (jet-model.ts, voxel-sprite.ts, flame-layer.ts and post.ts read in full; scene.ts read for constants, palettes, buildWorld, updateView, step, axes/project, drawWorld, drawSky, trails, wake, smoke, drawJet and render; the .tsx read for input and layout). I did not run or follow anything in it. Everything below is paraphrased: formulas and tuning numbers, no code and no voxel data.
 
 Units: 1 world unit = 1 jet voxel. The reference jet is 34 wide (x), 46 long (y) and 13 slices tall (z). Its speed of 92 u/s is about 2 jet lengths per second.
 

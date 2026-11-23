@@ -1,70 +1,72 @@
-# MOONSKIM — Cardputer-Adv 像素战机
+# MOONSKIM — pixel fighter jet for the Cardputer-Adv
 
-一个跑在 **M5Stack Cardputer-Adv** 上的像素风战机飞行小游戏：夜空星海、月光海面、体素岛屿与云层，原创体素战机 "Kestrel"，**倾斜机身（BMI270 IMU）即可操控**，可翻滚、加速、穿环计分。设备上稳定 60 fps。
+**English** | [简体中文](README.zh-CN.md)
 
-灵感来自一个 sprite stacking 网页 demo；本项目的代码与美术（战机体素模型、调色板等）均为原创实现。
+A pixel-art fighter-jet flyer for the **M5Stack Cardputer-Adv**: a starry night sky, a moonlit ocean, voxel islands and clouds, and an original voxel jet called "Kestrel". **Tilt the device (BMI270 IMU) to fly.** Roll, boost, and thread rings for points. It runs at a locked 60 fps on the device.
 
-| 夜晚 | 穿环 | 压坡度 |
+Inspired by a sprite-stacking web demo. All code and art here (the jet's voxel model, the palettes and so on) are original.
+
+| Night | Ring Run | Banking |
 |---|---|---|
 | ![](docs/shots/01_night_moon_glitter.png) | ![](docs/shots/02_ring_run.png) | ![](docs/shots/03_bank_trails.png) |
-| **黄昏** | **白天** | **标题** |
+| **Sunset** | **Day** | **Title** |
 | ![](docs/shots/04_sunset.png) | ![](docs/shots/05_day_islands.png) | ![](docs/shots/06_title.png) |
 
-## 玩法
+## Gameplay
 
-- **Ring Run**（Enter）：45 秒倒计时，穿过前方的环加时、加分，连续穿环叠连击（最高 ×8），贴海低飞、翻滚、加速穿环有额外奖励。最高分存进 NVS。
-- **Free Flight**（2）：自由飞行，不计时。
-- 撞岛或高速扎海会坠毁，迅速复活继续。
+- **Ring Run** (Enter): a 45 s countdown. Each ring you fly through adds time and score, and consecutive rings build a combo (up to ×8). Skimming the sea, rolling or boosting through a ring earns bonuses. The best score is saved in NVS.
+- **Free Flight** (2): fly freely with no timer.
+- Hitting an island, or hitting the sea too fast, crashes the jet. You respawn quickly and carry on.
 
-## 操控（设备）
+## Controls (device)
 
-横握 Cardputer，开局出现 **HOLD STILL** 时保持平稳——此时的姿势就是"中立位"。
+Hold the Cardputer in landscape. While **HOLD STILL** is shown at the start, keep it steady: that pose becomes neutral.
 
-| 操作 | 方式 |
+| Action | Input |
 |---|---|
-| 转弯 | 左右倾斜机身（或 `,` `/`、`A` `D`） |
-| 俯冲 / 爬升 | 上沿往外压 / 往回拉（或 `.` `;`、`S` `W`） |
-| 加速 | `Space` / `Alt` |
-| 桶滚 | `Z` / `X`（或 `L` / `'`） |
-| 开始 / 确认 | `Enter`；`2` 自由飞行 |
-| 暂停 | `P` / `` ` `` / G0 键 |
-| 重新校准倾斜 | `C` |
-| 倾斜开关 / 俯仰反转 | `T` / `I` |
-| 昼夜切换 / 视角 | `N` / `V` |
-| 帧率统计 / 帮助 | `F` / `H` |
-| 静音 / 音量 / 亮度 | `M` / `-` `=` / `[` `]` |
+| Turn | Tilt the device left/right (or `,` `/`, `A` `D`) |
+| Dive / climb | Tip the top edge away / toward you (or `.` `;`, `S` `W`) |
+| Boost | `Space` / `Alt` |
+| Barrel roll | `Z` / `X` (or `L` / `'`) |
+| Start / confirm | `Enter`; `2` for Free Flight |
+| Pause | `P` / `` ` `` / G0 button |
+| Recalibrate tilt | `C` |
+| Tilt on/off / invert pitch | `T` / `I` |
+| Time of day / camera | `N` / `V` |
+| FPS stats / help | `F` / `H` |
+| Mute / volume / brightness | `M` / `-` `=` / `[` `]` |
 
-## 构建与烧录
+## Build and flash
 
-需要 [PlatformIO](https://platformio.org/)。
+Requires [PlatformIO](https://platformio.org/).
 
 ```powershell
-pio run -e cardputer-adv -t upload           # 编译并烧录
-pio device monitor -e cardputer-adv          # 串口日志（115200）
+pio run -e cardputer-adv -t upload           # build and flash
+pio device monitor -e cardputer-adv          # serial log (115200)
 ```
 
-其他环境：`cardputer-adv-bench`（不锁帧 + 开机自动跑分）、`cardputer-adv-debug`（IMU 数据流）、`cardputer-adv-spi80`（80 MHz SPI 超频）。
+Other environments: `cardputer-adv-bench` (no frame cap, runs a benchmark at boot), `cardputer-adv-debug` (IMU data stream), `cardputer-adv-spi80` (80 MHz SPI overclock).
 
-串口单字符命令：`?` 帮助、`b` 20 秒自动驾驶跑分、`g` 截图（配合 `python tools/grab_shot.py COM3 out.png`）、`i` IMU 数据流、`r`/`p` 翻转横滚/俯仰方向、`h` 内存、`v` 重打启动日志。
+Single-character serial commands: `?` help, `b` 20 s autopilot benchmark, `g` screenshot (with `python tools/grab_shot.py COM3 out.png`), `i` IMU stream, `r`/`p` flip roll/pitch direction, `h` memory, `v` reprint the boot log.
 
-## 在电脑上预览
+## Preview on a PC
 
-核心代码（`src/core`）是与平台无关的 C++17，可以在 Windows 上直接跑（需要 Visual Studio 2022 Build Tools）：
+The core (`src/core`) is platform-independent C++17 and runs directly on Windows (requires Visual Studio 2022 Build Tools):
 
 ```powershell
-tools\play\build.bat                          # 可交互窗口版：鼠标模拟倾斜，键盘同设备
+tools\play\build.bat                          # interactive window: mouse = tilt, keys as on the device
 tools\play\out\moonskim_pc.exe
 
-tools\sim\build.bat wx test                   # 脚本化模拟器：22 个场景、截图、确定性校验
+tools\sim\build.bat wx test                   # scripted simulator: 22 scenarios, screenshots, determinism check
 ```
 
-## 技术要点
+## Technical notes
 
-- 120×68 调色板索引帧 + 深度缓冲，2× 放大到 240×135；core 0 上的推屏任务用 DMA 异步推屏，与 core 1 的渲染完全重叠。
-- Comanche 式前后向体素地形 march，海面、岛屿、云层一次画完；整数化世界生成（PC 与设备 CRC 一致）。
-- 体素战机：914 个外壳体素，背面剔除、无除法透视、26 法线光照、描边、尾焰、影子。
-- 陀螺仪融合的倾斜控制：自动校准、软死区、响应曲线、中立位漂移补偿。
-- 16 kHz 软件合成音效。
-- 设备实测（20 s 跑分）：fps_min 59.8 / avg 60.0，core-1 每帧约 8 ms。
+- A 120×68 palette-indexed frame plus a depth buffer, scaled 2× to 240×135. A present task on core 0 pushes frames to the display over DMA, fully overlapped with rendering on core 1.
+- A front-to-back voxel terrain march (Comanche-style) draws the sea, islands and clouds in a single pass. World generation is integer-only, so the PC and the device produce the same world CRC.
+- The voxel jet: 914 shell voxels, back-face culling, perspective without divides, 26-normal lighting, outline, afterburner flame and shadow.
+- Gyro-fused tilt control: automatic calibration, soft deadzone, response curve, and compensation for drift of the neutral pose.
+- 16 kHz software-synthesised sound.
+- Measured on the device (20 s benchmark): fps_min 59.8 / avg 60.0, about 8 ms of core-1 work per frame.
 
-详细设计见 [docs/DESIGN.md](docs/DESIGN.md)。
+The full design is in [docs/DESIGN.md](docs/DESIGN.md).

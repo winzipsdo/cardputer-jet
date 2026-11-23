@@ -1,6 +1,6 @@
 # Cardputer-Adv + PlatformIO: verified facts
 
-**Status: a test build compiled.** I built a test project that calls every API below with `pio run`. The result was SUCCESS: RAM 8.6% (28,132 B static), Flash 17.5% of the 3.2 MB app partition. Project: `C:\Users\winzi\AppData\Local\Temp\claude\ac57a37b8289de43\cea93141-5671-47fb-8431-9aff4089c98a\scratchpad\buildtest\` (`platformio.ini`, `src\main.cpp`, `build.log`). Nothing was flashed or run on hardware, so runtime behaviour is still unverified.
+**Status: a test build compiled.** I built a test project that calls every API below with `pio run`. The result was SUCCESS: RAM 8.6% (28,132 B static), Flash 17.5% of the 3.2 MB app partition. Project: a throwaway local test project (`platformio.ini`, `src\main.cpp`, `build.log`). Nothing was flashed or run on hardware, so runtime behaviour is still unverified.
 
 I read the library source at the current HEADs: M5Unified 96576a1 (0.3.0), M5GFX 28d4794 (0.3.0), M5Cardputer bf64d31 (tag 1.2.0 has the same `src/`). Clones are in `...\scratchpad\libsrc\`.
 
