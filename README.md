@@ -87,4 +87,15 @@ There are no image or audio asset files at all:
 - The stars and the Milky Way are procedural.
 - All sound is synthesised in real time at 16 kHz.
 
+## Development time
+
+Built with Claude Code (multi-agent workflows) in about **5 hours** of wall-clock time, from the first research to a locked 60 fps on the device:
+
+| Phase | Time |
+|---|---|
+| Research and design (hardware, reference demo, performance; three competing designs plus a judge) | ~50 min |
+| Implementation, integration and review (5 parallel groups, then adversarial review and fixes) | ~1 h |
+| On-device performance tuning (flash, measure over serial, iterate to 60 fps) | ~2 h |
+| PC preview, final fixes, README and publishing | the rest |
+
 The full design is in [docs/DESIGN.md](docs/DESIGN.md).
