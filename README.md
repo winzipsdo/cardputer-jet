@@ -69,4 +69,22 @@ tools\sim\build.bat wx test                   # scripted simulator: 22 scenarios
 - 16 kHz software-synthesised sound.
 - Measured on the device (20 s benchmark): fps_min 59.8 / avg 60.0, about 8 ms of core-1 work per frame.
 
+## Size
+
+| | Size |
+|---|---|
+| Firmware (`firmware.bin`) | ~792 KB (23.6% of the 3.2 MB app partition) |
+| Game code (rendering, physics, gameplay, sound, platform layer) | ~181 KB |
+| Game constant data (palette tables, font, keymap, ...) | ~27 KB |
+| Everything else (ESP-IDF, Arduino, FreeRTOS, USB, M5 display/IMU/audio libraries) | ~580 KB |
+| Source code (`src/`) | ~13,000 lines of C++ |
+| RAM | ~196 KB static, ~52 KB heap free after boot |
+| PC preview (`moonskim_pc.exe`) | ~475 KB |
+
+There are no image or audio asset files at all:
+- The 914-voxel jet is sculpted in code at boot (~29 ms).
+- The islands, sea and clouds are generated at boot (~333 ms) with integer-only math, so the world is identical every time.
+- The stars and the Milky Way are procedural.
+- All sound is synthesised in real time at 16 kHz.
+
 The full design is in [docs/DESIGN.md](docs/DESIGN.md).
