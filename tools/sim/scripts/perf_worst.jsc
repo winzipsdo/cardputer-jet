@@ -1,0 +1,29 @@
+# perf_worst.jsc - worst-case frames: low among islands with clouds overhead, full boost, then
+# a crash explosion (particles, spray, debris, smoke).
+# EASY assist keeps the jet on its terrain floor (max ground ahead + 6 u), so it skims the
+# terraces instead of hitting the first one; `cmd x` then forces the crash at a known time.
+# Checks (DESIGN.md section 21): world march steps <= 180 and samples <= 25k per frame;
+# esp_est world <= 6.0 ms, jet <= 2.5 ms, fx <= 1.5 ms (maxima over the whole scenario; the
+# cost model is fitted to the device, where 60 fps holds while core-1 work stays <= ~16.5 ms;
+# device bench maxima: wld 4.7, jet 2.1, fx 0.8).
+0     persist assist 0
+0     view 0
+0     state title
++0    state free
++0.5  seek land 14 220 cloudy
++0    resetmax
++0.1  hold SPACE 3
++1.0  shot low_boost
++1.0  shot islands_close
++0.1  cmd x                   # force crash + respawn: explosion particles
++0    wait state == CRASH 2
++0.3  shot crash_particles
++0.4  shot crash_smoke
++0    assert max_steps <= 180
++0    assert max_samples <= 25000
++0    assert max_esp_wld <= 6.0
++0    assert max_esp_jet <= 2.5
++0    assert max_esp_fx <= 1.5
++0    assert max_empty_px == 0
++0    sheet perf_worst 4
++0    end

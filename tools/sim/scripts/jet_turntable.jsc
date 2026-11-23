@@ -1,0 +1,148 @@
+# jet_turntable.jsc - studio frames of the jet alone (sim 'jetpose': world + sky + shadow + jet,
+# no HUD): yaw 0..315 step 45 x roll 0 / 90 / 180 x pitch -30 / +30 on one sheet, plus a level
+# day row and a boost row. Yaw is relative to the chase camera (0 = tail toward the camera).
+# Checks (group C): no pinholes at any pose, continuous outline, red nav light on the jet's
+# left and green on its right, gold canopy, raised wing lighter than the lowered one.
+0     persist assist 2
+0     tod night
+0     state title
++0    state free
++0.2  seek sea 70
++1.0  echo turntable night
++0.05 jetpose 0 0 -30
++0    shot y000_r000_pm30
++0.05 jetpose 45 0 -30
++0    shot y045_r000_pm30
++0.05 jetpose 90 0 -30
++0    shot y090_r000_pm30
++0.05 jetpose 135 0 -30
++0    shot y135_r000_pm30
++0.05 jetpose 180 0 -30
++0    shot y180_r000_pm30
++0.05 jetpose 225 0 -30
++0    shot y225_r000_pm30
++0.05 jetpose 270 0 -30
++0    shot y270_r000_pm30
++0.05 jetpose 315 0 -30
++0    shot y315_r000_pm30
++0.05 jetpose 0 90 -30
++0    shot y000_r090_pm30
++0.05 jetpose 45 90 -30
++0    shot y045_r090_pm30
++0.05 jetpose 90 90 -30
++0    shot y090_r090_pm30
++0.05 jetpose 135 90 -30
++0    shot y135_r090_pm30
++0.05 jetpose 180 90 -30
++0    shot y180_r090_pm30
++0.05 jetpose 225 90 -30
++0    shot y225_r090_pm30
++0.05 jetpose 270 90 -30
++0    shot y270_r090_pm30
++0.05 jetpose 315 90 -30
++0    shot y315_r090_pm30
++0.05 jetpose 0 180 -30
++0    shot y000_r180_pm30
++0.05 jetpose 45 180 -30
++0    shot y045_r180_pm30
++0.05 jetpose 90 180 -30
++0    shot y090_r180_pm30
++0.05 jetpose 135 180 -30
++0    shot y135_r180_pm30
++0.05 jetpose 180 180 -30
++0    shot y180_r180_pm30
++0.05 jetpose 225 180 -30
++0    shot y225_r180_pm30
++0.05 jetpose 270 180 -30
++0    shot y270_r180_pm30
++0.05 jetpose 315 180 -30
++0    shot y315_r180_pm30
++0.05 jetpose 0 0 30
++0    shot y000_r000_pp30
++0.05 jetpose 45 0 30
++0    shot y045_r000_pp30
++0.05 jetpose 90 0 30
++0    shot y090_r000_pp30
++0.05 jetpose 135 0 30
++0    shot y135_r000_pp30
++0.05 jetpose 180 0 30
++0    shot y180_r000_pp30
++0.05 jetpose 225 0 30
++0    shot y225_r000_pp30
++0.05 jetpose 270 0 30
++0    shot y270_r000_pp30
++0.05 jetpose 315 0 30
++0    shot y315_r000_pp30
++0.05 jetpose 0 90 30
++0    shot y000_r090_pp30
++0.05 jetpose 45 90 30
++0    shot y045_r090_pp30
++0.05 jetpose 90 90 30
++0    shot y090_r090_pp30
++0.05 jetpose 135 90 30
++0    shot y135_r090_pp30
++0.05 jetpose 180 90 30
++0    shot y180_r090_pp30
++0.05 jetpose 225 90 30
++0    shot y225_r090_pp30
++0.05 jetpose 270 90 30
++0    shot y270_r090_pp30
++0.05 jetpose 315 90 30
++0    shot y315_r090_pp30
++0.05 jetpose 0 180 30
++0    shot y000_r180_pp30
++0.05 jetpose 45 180 30
++0    shot y045_r180_pp30
++0.05 jetpose 90 180 30
++0    shot y090_r180_pp30
++0.05 jetpose 135 180 30
++0    shot y135_r180_pp30
++0.05 jetpose 180 180 30
++0    shot y180_r180_pp30
++0.05 jetpose 225 180 30
++0    shot y225_r180_pp30
++0.05 jetpose 270 180 30
++0    shot y270_r180_pp30
++0.05 jetpose 315 180 30
++0    shot y315_r180_pp30
++0    sheet jet_turntable 8
++0.05 tod day
++0.6  echo turntable day, level
++0.05 jetpose 0 0 0
++0    shot day_y000
++0.05 jetpose 45 0 0
++0    shot day_y045
++0.05 jetpose 90 0 0
++0    shot day_y090
++0.05 jetpose 135 0 0
++0    shot day_y135
++0.05 jetpose 180 0 0
++0    shot day_y180
++0.05 jetpose 225 0 0
++0    shot day_y225
++0.05 jetpose 270 0 0
++0    shot day_y270
++0.05 jetpose 315 0 0
++0    shot day_y315
++0    sheet jet_turntable_day 8
++0.05 tod night
++0.6  echo turntable boost
++0.05 jetpose 0 0 0 1
++0    shot boost_y000
++0.05 jetpose 45 0 0 1
++0    shot boost_y045
++0.05 jetpose 90 0 0 1
++0    shot boost_y090
++0.05 jetpose 135 0 0 1
++0    shot boost_y135
++0.05 jetpose 180 0 0 1
++0    shot boost_y180
++0.05 jetpose 225 0 0 1
++0    shot boost_y225
++0.05 jetpose 270 0 0 1
++0    shot boost_y270
++0.05 jetpose 315 0 0 1
++0    shot boost_y315
++0    sheet jet_turntable_boost 8
++0    jetpose off
++0    end

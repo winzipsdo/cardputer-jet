@@ -1,0 +1,19 @@
+# crash_island.jsc - Ring Run, fly low and straight into the tallest island nearby.
+# Checks: the crash happens (fire, debris, smoke - group C), the jet respawns, the timer is
+# charged the crash penalty (group D).
+0     persist assist 1       # Normal: no EASY terrain floor
+0     state title
++0    state ring
++0.5  seek land 12 200
++0    wait state == CRASH 10
++0    assert crashes == 1
++0    assert time_left < 41  # 45 s start - 5 s crash penalty - flight time
++0.15 shot crash_fire
++0.35 shot crash_debris
++0.6  shot crash_smoke
++0    wait state == PLAY 6
++1.0  shot respawned
++0    assert crashes == 1
++0    assert state == PLAY
++0    sheet crash_island 4
++0    end

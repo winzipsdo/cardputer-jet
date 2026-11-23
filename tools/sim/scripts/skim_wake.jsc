@@ -1,0 +1,19 @@
+# skim_wake.jsc - fly 6 u above the sea (skim band < 8 u), level then banked, night then day.
+# Checks (group C): shadow on the sea under the jet that narrows when banked, wake V,
+# bioluminescent wake at night, spray; no crash while skimming.
+0     persist assist 2
+0     tod night
+0     state title
++0    state free
++0.5  seek sea 6
++1.5  shot skim_level
++0    assert agl < 9
++0    assert crashes == 0
++0.5  tilt 25 0 0.3
++0.8  shot skim_banked
++0.7  tilt 0 0 0.3
++0.5  tod day
++1.0  shot skim_day
++0    assert crashes == 0
++0    sheet skim_wake 3
++0    end

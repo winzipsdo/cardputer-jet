@@ -1,0 +1,27 @@
+# bank_left_right.jsc - hard tilt turns right and left, then level flight; a steady full
+# keyboard turn at the end.
+# Checks: wingtip trails appear in hard turns and fade when level (group C); the steady full
+# turn reaches yaw rate 1.30 +- 0.05 rad/s (group D).
+0     persist assist 2       # Pro: no ring magnet in the final stick
+0     state title
++0    state free
++0.5  seek sea 45
++0.5  tilt 30 0 0.3          # past full scale (25 deg at Med) -> turn = +1
++1.0  shot bank_right
++0.6  shot right_trails
++0    assert turn > 0.9
++0.4  tilt 0 0 0.3
++1.5  shot level_fade
++0.5  tilt -30 0 0.3
++1.0  shot bank_left
++0.6  shot left_trails
++0    assert turn < -0.9
++0.4  tilt 0 0 0.3
++2.0  shot level
++0    sheet bank_left_right 3
++0    seek sea 60
++0.1  hold D 4               # full right turn on the keyboard
++3.5  assert yaw_rate >= 1.25
++0    assert yaw_rate <= 1.35
++0.6  assert crashes == 0
++0    end

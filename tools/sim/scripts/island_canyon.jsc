@@ -1,0 +1,17 @@
+# island_canyon.jsc - low approach into the tallest island nearby, near and high views.
+# Checks (group B): terrain occludes terrain correctly (no see-through walls), terraces with
+# lit/dark faces and side walls, no EMPTY pixels.
+0     state title
++0    state free
++0    view 0
++0.5  seek land 30 260
++1.0  shot approach
++1.0  shot near
++0    assert empty_px == 0
++0.5  shot close
++0    assert empty_px == 0
++0.1  view 2
++0.5  shot high_view
++0    assert empty_px == 0
++0    sheet island_canyon 2
++0    end

@@ -1,0 +1,40 @@
+# tilt_cal.jsc - end-to-end tilt mapping: synthetic BMI270 -> TiltController -> final stick.
+# The synthetic IMU is held at the 35 deg pose; tilt angles are relative to it (see
+# tools/sim/synth_imu.h). Assist Pro removes the ring magnet, so turn/climb = tilt output.
+# Checks (group D, DESIGN.md section 21):
+#   roll +15 -> turn > 0.4 | roll -15 -> turn < -0.4 | roll 2 -> turn == 0
+#   top toward the face (pitch -10) -> climb > 0 | invert flips it
+#   recalibrating at a new hold pose zeroes the output
+# The synthetic IMU runs noise-free here (the gyro bias stays): roll +15 deg maps to turn 0.409
+# at Med, so the 0.4 threshold has only ~0.4 deg of margin, less than the calibration error the
+# section 18 noise causes. `jetsim --selftest` repeats the mapping with noise (tilt[B]).
+0     imu noise off
+0     persist assist 2
+0     state title             # the boot CALIBRATE state calibrates at the hold pose
++0    assert calibrated == 1
++0    state free
++0.2  seek sea 60
++0.3  tilt 2 0 0.2
++1.0  assert turn == 0
++0    assert tilt_valid == 1
++0    tilt 15 0 0.3
++1.5  assert turn > 0.4
++0    tilt -15 0 0.3
++1.5  assert turn < -0.4
++0    tilt 0 -10 0.3
++1.5  assert climb > 0
++0    tap I                   # invert pitch
++0.5  assert climb < 0
++0    tap I                   # back to normal
++0.5  assert climb > 0
++0    tilt 0 0 0.3
++1.0  assert climb == 0
++0    assert turn == 0
++0    seek sea 60
++0.1  pose 55 0.5             # new hold pose: 20 deg further toward the face
++1.0  assert climb > 0.3      # reads as a strong climb until recalibrated
++0    tap C                   # recalibrate (0.5 s, game paused)
++2.0  assert calibrated == 1
++0    assert turn == 0
++0    assert climb == 0
++0    end

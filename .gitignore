@@ -1,0 +1,6 @@
+.pio/
+build/
+tools/sim/out/
+*.exe
+*.obj
+tools/play/out/

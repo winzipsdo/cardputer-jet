@@ -1,0 +1,16 @@
+# tod_all.jsc - the same view at night, sunset and day.
+# Checks (group B): day and sunset palettes, sun disc at sunset, no stars by day, moon at night.
+0     state title
++0    state free
++0.5  spawn 5 45
++0.1  teleport ~ ~ 45 -45    # face the light azimuth (moon / sun)
++0    tod night
++1.4  shot night
++0.1  tod sunset
++0.9  shot sunset
++0    assert empty_px == 0
++0.1  tod day
++0.9  shot day
++0    assert empty_px == 0
++0    sheet tod_all 3
++0    end

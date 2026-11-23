@@ -1,0 +1,20 @@
+# barrel_roll.jsc - one left barrel roll (Z), 8 frames 0.1 s apart on a sheet, then a right roll.
+# Checks: the roll animates through a full turn in 0.8 s with the lateral dash; no holes in
+# the jet at any roll angle; no crash.
+0     state title
++0    state free
++0.5  seek sea 45
++1.5  tap Z
++0    shot roll_0
++0.1  shot roll_1
++0.1  shot roll_2
++0.1  shot roll_3
++0.1  shot roll_4
++0.1  shot roll_5
++0.1  shot roll_6
++0.1  shot roll_7
++0    sheet barrel_roll 4
++0.5  tap X
++0.4  shot roll_right_mid
++0.6  assert crashes == 0
++0    end

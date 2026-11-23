@@ -1,0 +1,17 @@
+# steep_climb_stars.jsc - full climb at night; the camera looks up into the star field.
+# Checks (group B): sky bands, star twinkle between climb_a and climb_b, Milky Way, mostly sky;
+# no EMPTY pixels.
+0     persist assist 2
+0     tod night
+0     state title
++0    state free
++0.5  seek sea 40
++0.5  hold W 2.5
++1.0  shot climb_a
++0.5  shot climb_b
++0    assert pitch > 0.6
++0    assert empty_px == 0
++0.6  shot climb_top
++0    assert empty_px == 0
++0    sheet steep_climb_stars 3
++0    end

@@ -1,0 +1,24 @@
+# hud_all.jsc - every screen: calibrate, title, help, countdown, play HUD, pause, game over.
+# Checks (group D): all shots legible at --scale 2. The game over comes from the Ring Run timer
+# running out while flying high and straight (nothing to hit).
+0.25  shot calibrate          # boot CALIBRATE screen ("HOLD COMFORTABLY", ring progress)
++0    state title             # waits for the calibration to finish
++1.0  shot title
++0.1  tap H
++0.5  shot help
++0.1  tap H
++0.5  tap ENTER               # Ring Run: COUNTDOWN 3-2-1-GO
++0.5  shot countdown
++0    assert state == COUNTDOWN
++2.0  shot play
++0    assert state == PLAY
++0    teleport ~ ~ 170 ~
++0.5  tap P
++0.5  shot pause
++0    assert state == PAUSE
++0.1  tap ENTER               # menu item 0 = Resume
++0.5  assert state == PLAY
++0    wait state == GAMEOVER 70
++1.0  shot gameover
++0    sheet hud_all 4
++0    end

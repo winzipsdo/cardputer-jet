@@ -1,0 +1,24 @@
+# crash_sea.jsc - gentle descent onto the sea (vz about -5 u/s: skim touch, no crash), then a
+# steep one (vz about -20 u/s, pitch about -0.30 rad: crash by sink rate).
+# Tilt math (Med: pitch dz 4, full 22; climb = -shape; ask = climb * DIVE_MAX 0.70):
+#   tilt pitch 7.5  -> climb -0.108 -> pitch -0.076 rad -> vz = 68 sin(-0.076) ~ -5 u/s
+#   tilt pitch 14.2 -> climb -0.43  -> pitch -0.30 rad  -> vz ~ -20 u/s (> SEA_CRASH_PITCH)
+# Checks (group C): sea spray column on the crash. (group D): skim touch keeps the run alive.
+0     persist assist 2       # Pro: no ring magnet pulling the nose
+0     state title
++0    state free
++0.5  seek sea 12
++0.1  tilt 0 7.5 0.3
++0    wait z < 3 10
++0    assert vz > -14
++0    shot skim_touch
++0.5  assert crashes == 0
++0    tilt 0 0 0.2
++0.3  teleport ~ ~ 45 ~
++0.2  tilt 0 14.2 0.2
++0    wait state == CRASH 10
++0    assert crashes == 1
++0.2  shot sea_crash_spray
++0.5  shot sea_crash_column
++0    sheet crash_sea 3
++0    end

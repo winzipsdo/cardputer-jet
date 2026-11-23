@@ -1,0 +1,19 @@
+# boost.jsc - cruise, then hold SPACE for 3 s, then release.
+# Checks: flame ~6 u at cruise and ~20 u at boost with shock dots and a white core (group C);
+# boost speed ~122 u/s (group D); --wav: engine audio rises with boost.
+0     persist assist 2
+0     state title
++0    state free
++0.5  seek sea 40
++1.5  shot cruise
++0    assert speed > 60
++0    assert speed < 76
++0.2  hold SPACE 3.0
++1.0  shot boost_a
++0.3  shot boost_b
++0.8  assert speed > 110
++0    assert speed < 135
++0    shot boost_full
++2.0  shot after_boost
++0    sheet boost 5
++0    end

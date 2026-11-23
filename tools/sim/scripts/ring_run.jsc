@@ -1,0 +1,16 @@
+# ring_run.jsc - Ring Run on autopilot for 60 s.
+# Checks (group D): autopilot passes >= 10 rings in 60 s with no crash. Run with --wav to hear
+# the chimes. Shots every 10 s.
+0     state title
++0    state ring
++0    autopilot on
++10   shot ring_10s
++10   shot ring_20s
++10   shot ring_30s
++10   shot ring_40s
++10   shot ring_50s
++0    sheet ring_run 5
++10   assert rings >= 10
++0    assert crashes == 0
++0    assert state != GAMEOVER
++0    end

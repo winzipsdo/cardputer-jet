@@ -1,0 +1,24 @@
+# night_cruise.jsc - cruise over the night sea toward islands, then toward the moon.
+# Checks (DESIGN.md section 21, group B): horizon at logical row 25 +- 3 at cruise, 8 dithered
+# sky bands, >= 40 stars that twinkle between islands_a and islands_b (0.5 s apart), Milky Way,
+# moon with craters + halo, glitter path below the moon, terraced islands with lit/dark faces
+# and side walls, surf foam that changes between frames, fog toward the horizon, no EMPTY px.
+0     seed 0x4D4F4F4E
+0     tod night
+0     view 0
+0     state title            # real boot calibration, then TITLE
++0    state free
++0.5  spawn 3 40             # open water, land 120..300 u ahead, facing it
++2.5  shot islands_a
++0    assert empty_px == 0
++0    assert horizon >= 22
++0    assert horizon <= 28
++0.5  shot islands_b         # stars twinkle, surf changes
++0.5  teleport ~ ~ 40 -45    # face the moon (light azimuth = forward(-45 deg))
++1.5  shot moon
++0    assert empty_px == 0
++0.1  seek sea 30
++1.5  shot moon_glitter      # glitter path on the near sea under the moon
++0    assert max_empty_px == 0
++0    sheet night_cruise 2
++0    end

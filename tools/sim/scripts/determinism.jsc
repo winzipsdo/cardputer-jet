@@ -1,0 +1,18 @@
+# determinism.jsc - run twice with --hash; every [HASH] line must be identical between runs
+# (build.bat test does this automatically). Covers autopilot, rings, a roll, a time-of-day
+# change and a forced crash/respawn.
+0     seed 0x4D4F4F4E
+0     state title
++0    state ring
++0    autopilot on
++1    shot det_01
++2    shot det_03
++2    tod sunset
++1    shot det_06
++2    tap Z
++0.4  shot det_08
++1.6  cmd x
++0.5  shot det_10
++2.0  shot det_12
++0    sheet determinism 3
++0    end
