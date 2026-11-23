@@ -99,3 +99,7 @@ tools\sim\build.bat wx test                   # 脚本化模拟器：22 个场�
 | PC 预览版、最后修复、README 与发布 | 其余时间 |
 
 详细设计见 [docs/DESIGN.md](docs/DESIGN.md)。
+
+## 许可证
+
+[MIT](LICENSE)

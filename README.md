@@ -99,3 +99,7 @@ Built with Claude Code (multi-agent workflows) in about **5 hours** of wall-cloc
 | PC preview, final fixes, README and publishing | the rest |
 
 The full design is in [docs/DESIGN.md](docs/DESIGN.md).
+
+## License
+
+[MIT](LICENSE)
