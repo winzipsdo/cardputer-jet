@@ -2,9 +2,9 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-A pixel-art fighter-jet flyer for the **M5Stack Cardputer-Adv**: a starry night sky, a moonlit ocean, voxel islands and clouds, and an original voxel jet called "Kestrel". **Tilt the device (BMI270 IMU) to fly.** Roll, boost, and thread rings for points. It runs at a locked 60 fps on the device.
+A pixel-art fighter-jet flyer for the **M5Stack Cardputer-Adv**: a starry night sky, a moonlit ocean, voxel islands and clouds, and a voxel jet called "Kestrel". **Tilt the device (BMI270 IMU) to fly.** Roll, boost, and thread rings for points. It runs at a locked 60 fps on the device.
 
-Inspired by a sprite-stacking web demo. All code and art here (the jet's voxel model, the palettes and so on) are original.
+Inspired by a sprite-stacking web demo.
 
 | Night | Ring Run | Banking |
 |---|---|---|

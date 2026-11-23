@@ -2,9 +2,9 @@
 
 [English](README.md) | **简体中文**
 
-一个跑在 **M5Stack Cardputer-Adv** 上的像素风战机飞行小游戏：夜空星海、月光海面、体素岛屿与云层，原创体素战机 "Kestrel"，**倾斜机身（BMI270 IMU）即可操控**，可翻滚、加速、穿环计分。设备上稳定 60 fps。
+一个跑在 **M5Stack Cardputer-Adv** 上的像素风战机飞行小游戏：夜空星海、月光海面、体素岛屿与云层，体素战机 "Kestrel"，**倾斜机身（BMI270 IMU）即可操控**，可翻滚、加速、穿环计分。设备上稳定 60 fps。
 
-灵感来自一个 sprite stacking 网页 demo；本项目的代码与美术（战机体素模型、调色板等）均为原创实现。
+灵感来自一个 sprite stacking 网页 demo。
 
 | 夜晚 | 穿环 | 压坡度 |
 |---|---|---|
